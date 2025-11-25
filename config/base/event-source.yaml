@@ -28,6 +28,6 @@ spec:
       kind: Snapshot
   sink:
     ref:
-      apiVersion: eventing.knative.dev/v1
-      kind: Broker
-      name: default
+      apiVersion: v1
+      kind: Service
+      name: conforma-knative-service
