@@ -332,6 +332,9 @@ func (e *executor) loadJobOptions(ctx context.Context, snapshot Snapshot) (*jobO
 
 	opts := defaultJobOptions(snapshot)
 
+	// Run it in the namespace where the service runs regardless of what's in opts
+	opts.TargetNamespace = e.namespace
+
 	// Override defaults with ConfigMap values if present
 	if v := cm.Data["GENERATOR_IMAGE"]; v != "" {
 		opts.GeneratorImage = v

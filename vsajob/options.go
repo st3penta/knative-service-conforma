@@ -65,6 +65,9 @@ var defaultBackoffLimit = int32(2)
 // These defaults can be overridden via ConfigMap settings.
 func defaultJobOptions(snapshot Snapshot) jobOptions {
 	return jobOptions{
+		// TODO: Remove this. We're currently overriding the namespace so we always use
+		// the namespace where the service runs. If we're doing that then having it here
+		// as part of the config makes no sense.
 		TargetNamespace:    snapshot.Namespace,
 		JobName:            fmt.Sprintf("vsa-gen-%s-%d", snapshot.Name, time.Now().Unix()),
 		GeneratorImage:     "quay.io/conforma/cli:latest",
